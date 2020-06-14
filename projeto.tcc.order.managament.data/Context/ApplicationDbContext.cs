@@ -30,7 +30,7 @@ namespace projeto.tcc.order.managament.data.Context
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)  
-            => options.UseNpgsql("Server=localhost;Port=5432;Database=AssetsManagament;User Id=postgres;Password=polivel12;",
+            => options.UseNpgsql("Server=database-2.crrtyjh5anqo.sa-east-1.rds.amazonaws.com;Port=5432;Database=tcc_orders;User Id=postgres;Password=polivel12;",
                         // => options.UseNpgsql(Environment.GetEnvironmentVariable("ConnectionString"),
                         npgsqlOptionsAction: pgOptions =>
                         {
@@ -40,6 +40,10 @@ namespace projeto.tcc.order.managament.data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AssetsMap());
+            modelBuilder.ApplyConfiguration(new AssetsSegmentMap());
+            modelBuilder.ApplyConfiguration(new OrderTypeMap());
+            modelBuilder.ApplyConfiguration(new OrderActiveMap());
+            modelBuilder.ApplyConfiguration(new OrderMap());
         }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken))

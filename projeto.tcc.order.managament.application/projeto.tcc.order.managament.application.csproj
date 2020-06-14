@@ -15,4 +15,8 @@
     <ProjectReference Include="..\projeto.tcc.order.managament.domain\projeto.tcc.order.managament.domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validations\" />
+  </ItemGroup>
+
 </Project>

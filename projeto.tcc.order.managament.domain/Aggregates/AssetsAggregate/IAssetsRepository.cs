@@ -9,5 +9,7 @@ namespace projeto.tcc.order.managament.domain.Aggregates.AssetsAggregate
     public interface IAssetsRepository : IRepository<Assets>
     {
         Task<IEnumerable<Assets>> GetAssetsPerPage();
+
+        Task<Assets> GetAssetById(Guid assetId);
     }
 }

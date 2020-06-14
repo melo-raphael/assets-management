@@ -25,6 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "projeto.tcc.order.managamen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.2 - CrossCutting", "04.2 - CrossCutting", "{CB350BE8-E33F-4CE1-9618-684B88567796}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.3 - Proxies", "04.3 - Proxies", "{4786674E-40B5-460A-BE12-02B9AAC76D88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projeto.tcc.order.managament.proxy.wallet", "projeto.tcc.order.managament.proxy.wallet\projeto.tcc.order.managament.proxy.wallet.csproj", "{7EE4887A-E954-4A7A-A346-27DE70901749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{C80654FB-432E-4718-BDE8-32D6D203E086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C80654FB-432E-4718-BDE8-32D6D203E086}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C80654FB-432E-4718-BDE8-32D6D203E086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE4887A-E954-4A7A-A346-27DE70901749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE4887A-E954-4A7A-A346-27DE70901749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE4887A-E954-4A7A-A346-27DE70901749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE4887A-E954-4A7A-A346-27DE70901749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +71,8 @@ Global
 		{FE294D89-A609-48FA-89C9-E6529F8F822E} = {CB411CAB-97FE-4262-8814-C79057FF764C}
 		{C80654FB-432E-4718-BDE8-32D6D203E086} = {FE294D89-A609-48FA-89C9-E6529F8F822E}
 		{CB350BE8-E33F-4CE1-9618-684B88567796} = {CB411CAB-97FE-4262-8814-C79057FF764C}
+		{4786674E-40B5-460A-BE12-02B9AAC76D88} = {CB411CAB-97FE-4262-8814-C79057FF764C}
+		{7EE4887A-E954-4A7A-A346-27DE70901749} = {4786674E-40B5-460A-BE12-02B9AAC76D88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C4172BC0-82C5-4AFB-9FF0-541F395DC0C1}

@@ -10,7 +10,7 @@ using projeto.tcc.order.managament.data.Context;
 namespace projeto.tcc.order.managament.data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200516183936_InitialCreate")]
+    [Migration("20200614155646_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,15 +18,33 @@ namespace projeto.tcc.order.managament.data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            modelBuilder.Entity("projeto.tcc.order.managament.domain.Aggregates.AssetsAggregate.AssetsSegment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssetsSegment");
+                });
 
             modelBuilder.Entity("projeto.tcc.order.managament.domain.Assets", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("9a1ea6d0-42a8-4fd5-a2c7-2fe1fd45e98b"));
+                        .HasDefaultValue(new Guid("ee03296a-ab33-4bbe-89b3-54b1fe1353cc"));
+
+                    b.Property<int>("AssetsSegmentId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -36,9 +54,9 @@ namespace projeto.tcc.order.managament.data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Segment")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("SegmentId")
+                        .HasColumnName("SegmentId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Symbol")
                         .IsRequired()
@@ -46,7 +64,18 @@ namespace projeto.tcc.order.managament.data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AssetsSegmentId");
+
                     b.ToTable("Assets");
+                });
+
+            modelBuilder.Entity("projeto.tcc.order.managament.domain.Assets", b =>
+                {
+                    b.HasOne("projeto.tcc.order.managament.domain.Aggregates.AssetsAggregate.AssetsSegment", "AssetsSegment")
+                        .WithMany()
+                        .HasForeignKey("AssetsSegmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using projeto.tcc.order.managament.data.Context;
@@ -9,9 +10,10 @@ using projeto.tcc.order.managament.data.Context;
 namespace projeto.tcc.order.managament.data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200614160318_OrderMigration")]
+    partial class OrderMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,14 +44,21 @@ namespace projeto.tcc.order.managament.data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("e0645829-6560-4e0a-9612-31481197f553"));
+                        .HasDefaultValue(new Guid("0838cf1b-469a-48e0-a162-2f5ccce1649c"));
 
                     b.Property<Guid>("AssetId")
                         .HasColumnName("AssetId")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("AssetsId")
+                        .HasColumnType("uuid");
+
                     b.Property<Guid?>("OrderActiveId")
                         .HasColumnType("uuid");
+
+                    b.Property<int>("OrderTypeId")
+                        .HasColumnName("OrderTypeId1")
+                        .HasColumnType("integer");
 
                     b.Property<int>("_amount")
                         .HasColumnName("Amount")
@@ -69,11 +78,11 @@ namespace projeto.tcc.order.managament.data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AssetId");
+                    b.HasIndex("AssetsId");
 
                     b.HasIndex("OrderActiveId");
 
-                    b.HasIndex("_orderTypeId");
+                    b.HasIndex("OrderTypeId");
 
                     b.ToTable("Order");
                 });
@@ -120,7 +129,7 @@ namespace projeto.tcc.order.managament.data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("9f905251-9a5e-4b29-9ea9-49a85eee4cbe"));
+                        .HasDefaultValue(new Guid("428e37f1-249c-474c-a54e-aaec710510ce"));
 
                     b.Property<int>("AssetsSegmentId")
                         .HasColumnType("integer");
@@ -152,7 +161,7 @@ namespace projeto.tcc.order.managament.data.Migrations
                 {
                     b.HasOne("projeto.tcc.order.managament.domain.Assets", null)
                         .WithMany()
-                        .HasForeignKey("AssetId")
+                        .HasForeignKey("AssetsId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -162,7 +171,7 @@ namespace projeto.tcc.order.managament.data.Migrations
 
                     b.HasOne("projeto.tcc.order.managament.domain.Aggregates.OrderAggregate.OrderType", "OrderType")
                         .WithMany()
-                        .HasForeignKey("_orderTypeId")
+                        .HasForeignKey("OrderTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
