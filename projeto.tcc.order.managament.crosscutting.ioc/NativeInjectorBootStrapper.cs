@@ -30,6 +30,8 @@ namespace projeto.tcc.order.managament.crosscutting.ioc
             services.AddScoped<ApplicationDbContext>();
             //services.AddScoped<IMessengerQueue<EventMessage>, RabbitMQMessengeQueuer>();
             services.AddScoped<IAssetsQuery, AssetsQueries>();
+            services.AddScoped<IOrderQuery, OrderQueries>();
+
         }
 
         private static void RegisterMediatR(IServiceCollection services)
