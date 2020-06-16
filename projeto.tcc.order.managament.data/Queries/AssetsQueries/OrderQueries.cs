@@ -22,7 +22,7 @@ namespace projeto.tcc.order.managament.data.Queries.AssetsQueries
 
                 connection.Open();
 
-                var sql = $"SELECT * FROM Orders o INNER JOIN OrderType ot ON o.OrderTypeId = ot.Id INNER JOIN OrderActive oa ON o.Id = oa.OrderId WHERE userId = '{userId}'";
+                var sql = $"SELECT * FROM \"Order\" o INNER JOIN \"OrderType\" ot ON o.\"OrderTypeId\" = ot.\"Id\" INNER JOIN \"OrderActive\" oa ON o.\"OrderActiveId\" = oa.\"Id\" WHERE \"UserId\" = '{userId}'";
                 var result = await Connection.QueryAsync<dynamic>(sql);
 
                 return result;
