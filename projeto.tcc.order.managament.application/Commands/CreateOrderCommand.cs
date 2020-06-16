@@ -5,7 +5,7 @@ using System.Text;
 
 namespace projeto.tcc.order.managament.application.Commands
 {
-    public class CreateOrderCommand : Command, IRequest<bool>
+    public class CreateOrderCommand : IRequest<bool>
     {
 
         public Guid UserId { get; set; }
@@ -14,11 +14,11 @@ namespace projeto.tcc.order.managament.application.Commands
         public string Type { get; set; }
         public int Amount { get; set; }
 
-        public override bool IsValid()
-        {
-            //ValidationResult = new GetUserByEmailCommandValidation<GetUserByEmailCommand>().Validate(this);
+        //public override bool IsValid()
+        //{
+        //    //ValidationResult = new GetUserByEmailCommandValidation<GetUserByEmailCommand>().Validate(this);
 
-            return ValidationResult.IsValid;
-        }
+        //    return ValidationResult.IsValid;
+        //}
     }
 }

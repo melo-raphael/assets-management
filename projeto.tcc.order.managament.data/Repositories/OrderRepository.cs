@@ -22,7 +22,7 @@ namespace projeto.tcc.order.managament.data.Repositories
 
         public async Task<Order> GetActiveOrders(Guid assetId)
         {
-           return await _dbSet.Include(x => x.OrderActive).Where(c => c.AssetId == assetId).SingleAsync();
+           return await _dbSet.Include(x => x.OrderActive).FirstOrDefaultAsync(y => y.AssetId == assetId);
         }
 
         public async Task SendOrderToWalletAsync(Guid userId, string symbol, decimal value, int amount, bool isCloseOrder, string orderType)

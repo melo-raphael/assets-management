@@ -8,8 +8,8 @@ namespace projeto.tcc.order.managament.domain.Aggregates.OrderAggregate
 {
     public class OrderType : Enumeration
     {
-        public static OrderType Buy = new OrderType(0, "buy");
-        public static OrderType Sell = new OrderType(1, "sell");
+        public static OrderType Buy = new OrderType(1, "buy");
+        public static OrderType Sell = new OrderType(2, "sell");
 
 
 

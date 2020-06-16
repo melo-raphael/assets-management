@@ -20,11 +20,8 @@ namespace projeto.tcc.order.managament.api.v1.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreateUserOrder([FromBody] CreateOrderCommand createOrderCommand)
-        {
-            var createOrder = createOrderCommand;
-            createOrder.UserId = new Guid();        
-    
-            var result = await _mediator.Send(createOrder);
+        {                
+            var result = await _mediator.Send(createOrderCommand);
 
             return Response(200, result);
         }

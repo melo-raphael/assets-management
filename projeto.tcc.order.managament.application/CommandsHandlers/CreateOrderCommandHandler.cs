@@ -26,16 +26,16 @@ namespace projeto.tcc.order.managament.application.CommandsHandlers
 
         public async Task<bool> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid())
-            {
-                NotifyValidationErrors(request);
-            }
+            //if (!request.IsValid())
+            //{
+            //    NotifyValidationErrors(request);
+            //}
 
 
             var orderFound = await _orderRepository.GetActiveOrders(request.AssetId);
 
             if (orderFound != null)
-            {
+            {   
                 orderFound.UpdateActiveOrder(request.Amount, request.Type);
 
                 if (orderFound.IsCloseOrder())
@@ -48,7 +48,7 @@ namespace projeto.tcc.order.managament.application.CommandsHandlers
 
             else
             {
-                var order = _mapper.Map<Order>(request);
+                var order = new Order(request.UserId, request.Value, request.Amount, request.Type, request.AssetId);
                 order.CreateNewActiveOrder();
 
                 _orderRepository.Add(order);

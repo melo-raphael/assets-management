@@ -15,7 +15,7 @@ namespace projeto.tcc.order.managament.domain.Aggregates.OrderAggregate
         private int _orderTypeId;
         public OrderActive OrderActive { get; private set; }
 
-        protected Order(){ }
+        protected Order() { }
         public Order(Guid userId, decimal value, int amount, string orderType, Guid assetId)
         {
             _userId = userId;
@@ -49,12 +49,17 @@ namespace projeto.tcc.order.managament.domain.Aggregates.OrderAggregate
 
         public bool IsCloseOrder()
         {
+            if (OrderActive == null)
+            {
+                return false;
+            }
+
             return OrderActive.IsCloseOrder();
         }
 
         public void AddCreatingOrderDomainEvent()
         {
-            this.AddDomainEvent(new CreatingNewOrderDomainEvent(_userId, AssetId, OrderActive.IsCloseOrder(), this._amount, this._value, OrderType.From(_orderTypeId).Name));
+            this.AddDomainEvent(new CreatingNewOrderDomainEvent(_userId, AssetId, IsCloseOrder(), this._amount, this._value, OrderType.From(_orderTypeId).Name));
         }
     }
 }
