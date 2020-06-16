@@ -6,6 +6,7 @@ using projeto.tcc.order.managament.data.Queries.AssetsQueries;
 using projeto.tcc.order.managament.data.Repositories;
 using projeto.tcc.order.managament.data.UnitOfWork;
 using projeto.tcc.order.managament.domain.Aggregates.AssetsAggregate;
+using projeto.tcc.order.managament.domain.Aggregates.OrderAggregate;
 using projeto.tcc.order.managament.domain.Exceptions;
 using projeto.tcc.order.managament.domain.SeedWork;
 
@@ -24,6 +25,7 @@ namespace projeto.tcc.order.managament.crosscutting.ioc
         private static void RegisterData(IServiceCollection services)
         {
             services.AddScoped<IAssetsRepository, AssetsRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ApplicationDbContext>();
             //services.AddScoped<IMessengerQueue<EventMessage>, RabbitMQMessengeQueuer>();

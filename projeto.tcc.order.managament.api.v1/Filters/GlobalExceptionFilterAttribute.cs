@@ -13,6 +13,7 @@ namespace projeto.tcc.order.managament.api.v1.Filters
 
         public void OnException(ExceptionContext context)
         {
+            Console.WriteLine(context.Exception.Message, context.Exception.InnerException);
 
             context.Result = new BadRequestObjectResult(new
             {
